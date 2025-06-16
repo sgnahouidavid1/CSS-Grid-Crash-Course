@@ -9,19 +9,34 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-    max-width: 1160px;
+
+.grid-container {
+    max-width: 960px;
     margin: 100px auto;
     padding: 10px;
-    
-}
-.container .grid-container {
-    display: grid;
+    display: grid; /* Enable grid layout */
+    /*align-items: start; /* Align items to the start of the grid area */
+    /*align-items: center; /* Align items to the center of the grid area */
+    /*align-items: end; /* Align items to the end of the grid area */
+    /*align-items: baseline; /* Align items to the baseline of the grid area */
+    /*align-items: stretch; /* Align items to stretch to fill the grid area, stretch is is the default value for align-items. */
     /*grid-template-columns: 1fr 1fr 2fr; /* Define two equal columns using fraction instead of pixel *this is the best practice* */
-    grid-template-columns: repeat(3, 1fr); /* Define three equal columns using the repeat function. */
+    /*grid-template-columns: repeat(3, 1fr); /* Define three equal columns using the repeat function. */
+    /*justify-content: end; /* Align the grid items to the end of the grid container */
     /*grid-template-columns: 100px 200px 300px; /* Define three columns with different widths */
-    column-gap: 10px; /* Space between columns */
-    row-gap: 10px; /* Space between rows */
+    /*column-gap: 10px; /* Space between columns */
+    /*row-gap: 10px; /* Space between rows */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create a responsive grid that fills the available space with a minimum width of 200px */
+    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Create a responsive grid that fills the available space with a minimum width of 200px and adjusts the number of columns based on the available space */
+    gap: 10px; /* Space between both columns and rows */
+    /*grid-auto-rows: 200px; /* Set a fixed height for rows */
+    /*grid-template-rows: auto; /* Rows will adjust based on content */
+    /*grid-auto-rows: minmax(100px, auto); /* Rows will have a minimum height of 100px and adjust based on content */
+    /*grid-template-rows: 200px 100px 200px; /* Define three columns with specific widths */
+    /*grid-template-rows: repeat(3,1fr); /* Define three equal rows using the repeat function. using a fraction will default the size of the grid to be 
+    the size of the grid with the largest amount of contain within it.*/
+
+
 }
 
 .item {
@@ -31,4 +46,41 @@ body {
     font-size: 20px;
     border: 3mm ridge skyblue; /* Add border to items *
     /* border: skyblue 2px solid; /* Add border to items */
+}
+
+
+/* Using nth-child to style specific items */
+
+ .container .grid-container .item:nth-child(2) {
+   /* height: 100px;
+    width: 100px;
+    align-self: center; 
+    justify-self: center; */
+
+}
+.container .grid-container .item:nth-child(1) {
+    /*background: #000;*/
+    /* Two different ways to span items across columns using grid-column property. */
+    /*grid-column: 1 / 3; /* Span from column 1 to column 3. The best practice is to do it this way because it specificly show where it start and ends.*/
+    /* grid-column: 1 / span 2; /* Span from column 1 and span 2 columns */
+}
+
+.container .grid-container .item:nth-child(3) {
+    /*background: #333;*/
+    /* Two different ways to span items across rows using grid-row property. */
+    /*grid-row: 2 / 4; /* Span from row 1 to row 3. The best practice is to do it this way because it specificly show where it start and ends.*/
+    /* grid-row: 2 / span 2; /* Span from row 1 and span 2 rows */
+}
+
+.container .grid-container .item:nth-child(4) {
+    /*background: #666;
+    grid-row: 2/4;*/   
+}  
+
+
+/* media query */
+@media (max-width: 500px) {
+    .grid-container {
+        grid-template-columns:  1fr; /* Change to a single column layout on small screens */
+    }
 }
