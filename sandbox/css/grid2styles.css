@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    height: 100vh; /* Take the full viewport height */
+    display: grid;
+    /* Define the grid-template-areas structure */
+    grid-template-areas: 
+    'header header header'
+    'nav main aside'
+    'nav footer footer'
+    ;
+    grid-template-columns: 1fr 4fr 1fr; /* 3 columns: nav, main, aside */
+    grid-template-rows: 80px 1fr 70px;  /* 3 rows: header, main, footer */
+}
+
+header, footer, main, aside, nav {
+    background-color: steelblue;
+    color: #fff;
+    padding: 20px;
+    border: skyblue 1px solid;
+}
+
+/* Grid areas */
+header {
+    grid-area: header; /* Header area */
+}
+nav {
+    grid-area: nav; /* Navigation area */
+}
+
+main {
+    grid-area: main; /* Main content area */
+}
+aside {
+    grid-area: aside; /* Sidebar area */
+}
+
+footer {
+    grid-area: footer; /* Footer area */
+}
